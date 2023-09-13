@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+  body{
+  background-color:white;
+  }
+  #ip2 {
+    border-radius: 25px;
+    border: 2px solid #c5ffd9;
+    padding: 15px; 
+    width: 400px;
+    height: 15px;
+    text-indent: 2em;     
+}
+#ip3 {
+    border-radius: 15px;
+    border: 2px solid #c5ffd9;
+    padding: 15px; 
+    width: 100px;
+    height: 15px;    
+}
+</style>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Entity</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+<link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Vendor CSS Files -->
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+
+
+  <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center" style="background: #c5ffd9">
+    <div class="container d-flex align-items-center">
+      <a href="/loginHome" class="logo me-auto"><img src="assets/img/logo5.png" alt="" class="logo"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+           <ul id="navigation">                                                                                          
+            
+              <li class="dropdown"><a href="#"  style="color: #1310cf"><b>Configurations</b><i class="bi bi-chevron-down"></i></a>
+                  <ul>
+                      <li><a href="entity.html">Entity</a></li>
+                      <li><a href="/loginDivision">Division</a></li>
+                      <li><a href="product.html">Product/Services</a></li>
+                     <li><a href="regulory.html">Regulatory Inventoty </a></li>
+                  </ul></li>
+                  <li class="dropdown"><a href="about.html" style="color: #10cf30"><b>Assessments</b><i class="bi bi-chevron-down"></i></a>
+                      <ul >
+                          <li><a href="question.html">Design Questionnaire</a></li>
+                          <li><a href="#">Run Assessment</a></li>
+                          <li><a href="matrix.html">Materiality Matrix </a></li>
+                          <li><a href="#">Archived Questionnaire </a></li>
+                      </ul>
+                  </li>
+                
+                  <li class="dropdown"><a href="#" style="color: #10cf30"><b>Reports</b><i class="bi bi-chevron-down"></i></a>
+                    <ul >
+                        <li><a href="#">Power Bi</a></li>
+                        <li><a href="#">Roles</a></li>
+                        <li><a href="#">Pw&nbspChange</a></li>
+                    </ul>
+                </li>
+
+                  <li class="dropdown"><a href="#" style="color: #10cf30"><b>Admin</b><i class="bi bi-chevron-down"></i></a>
+                      <ul >
+                          <li><a href="#">Users</a></li>
+                          <li><a href="#">Roles</a></li>
+                          <li><a href="#">Pw&nbspChange</a></li>
+                          <li><a href="/login">LogOut</a></li>
+                      </ul>
+                  </li>
+                  
+              </ul>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+  <script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+    <div class="conta-bord">
+<div class="conta-main">
+<h2>Entity</h2>
+</div>
+
+<div class="conta">
+<form>
+<table>
+<label for="name">Name: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+</label><input type="textfield" id="ip2" name="name"><br><br>
+
+            <tr><td><label for="legalform" >Legal Form:</label></td>
+<td><select id="ip2">
+
+<option value="Sole Proprietorship">Sole Proprietorship</option>
+<option>Limited Liability Company</option>
+<option>Partnership</option>
+<option>Private Limited Company</option>
+<option>Public Joint Stock Company</option>
+<option>Non-Profit Organization</option>
+<option>Association</option>
+<option>Freezone Enterprise(FZE)</option>
+<option>Freezone Company(FZC)</option>
+</select></td></tr>
+
+     <tr><td><label for="sector">Sector:</label></td>
+<td><select id="ip2">
+  <option>Oil and Gas</option>
+<option>Coal</option>
+<option>Agriculture,Aquaculture and fishing</option>
+<option>Mining</option>
+<option>Food and beverages</option>
+<option>Textiles and appareal</option>
+<option>Banking</option>
+<option>Insurance</option>
+<option>Utilities</option>
+</select></td></tr>
+  <tr><td><label for="parent">Parent Entity:</label></td>
+<td><select id="ip3">
+<option>Yes</option>
+<option>No</option>
+</select></td></tr>
+<tr><td><label for="parent">Reporting Framework:</label></td>
+  <td><select id="ip2">
+<option>Global Reporting Initiative-GRI</option>
+<option>Sustainable Development Goals-SDGs</option>
+<option>ADX Sustainability Disclosure Requirements-ADX-SDR</option>
+<option>DFM Sustainability Disclosure Requirements-DFM-SDR</option>
+<option>Sustainability Accounting Standard Board-SASB</option>
+<option>Task Force on Climate -Related Financial Disclosures-TCFD</option>
+
+</select></td></tr>
+  <tr><td></td><td><input type="button" value="Create"> &nbsp; <input type="button" value="Modify"> &nbsp; <input type="button" value="Delete"> </tr>
+
+
+
+
+</table>
+</form> 
+</div><br><br>
+</div>
+
+<footer>&nbsp;&nbsp;&copy; Copyright. All rights reserved.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Powered by SAM Corporate</footer><p></p> 
+</body>
+</html>
