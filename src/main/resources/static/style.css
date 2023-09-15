@@ -176,7 +176,6 @@ input[type="button"] {
     background-size: cover; /* This ensures the image covers the entire viewport */      
     background-position-y: left;
     justify-content: left;
-   
     margin: auto;
     width:1080px; 
     height:900px;

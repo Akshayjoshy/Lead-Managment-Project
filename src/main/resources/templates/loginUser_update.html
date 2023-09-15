@@ -8,57 +8,11 @@
   <meta content="" name="keywords">
 <style>
 body {
-  font-family: "Lato", sans-serif;
-  transition: background-color .5s;
+  
+  background-color: white;
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-table.center {
-  margin-left: auto; 
-  margin-right: auto;
-}
 .conta-border {
   width: 100% !important;
   height: 200%;
@@ -67,7 +21,7 @@ table.center {
   margin-top: 80px;
   background-color: white;
   border-radius: 20px;
-  border: solid 1px #ccc;
+  border: solid 2px #ccc;
 }
 h1{
 
@@ -85,6 +39,10 @@ button{
   justify-content: space-around;
   align-content: center;
 }
+footer{
+ margin: auto;
+ text-align: center;
+}
 </style>
 <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   
@@ -98,7 +56,7 @@ button{
 	
 	 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
-<body style="background-color: #f0f1f9;">
+<body>
 	<!-- Start Navbar -->
 	<!--<nav class="navbar navbar-light" style="background: linear-gradient(135deg, #71b7e6, #9b59b6);">-->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background: linear-gradient(#4495fa,#373389)">
@@ -135,76 +93,143 @@ button{
 <div class="conta-border">
 <h1 style="color: #4495fa">Update Lead</h1>
 
-<div th:if="${messages}" class="alert alert-danger">
+			<div th:if="${messages}" class="alert alert-danger">
 				<p th:text="${messages}" ></p>
 			</div><br><br>
 			<form action="#" th:action="@{/loginUser/saveUser}" th:object="${loginUser}" method="POST">
 				<input type="hidden" th:field="*{id}" />
 				
-				<input type="number" th:field="*{numberOfEmployee}"  placeholder="number Of Employee" required>
+				Number Of Employee:&emsp;<input type="number" th:field="*{numberOfEmployee}"  placeholder="number Of Employee" required>
 			
-			   <input type="date" th:field="*{date}" placeholder="date" >
+			   &emsp;Date:&emsp;<input type="date" th:field="*{date}" placeholder="date" >
 			
-				<input type="date" th:field="*{lastContactedDateAndTime}" placeholder="last Contacted Date And Time" > 
+				&emsp;Last Contacted Date:&emsp;<input type="date" th:field="*{lastContactedDateAndTime}" placeholder="last Contacted Date And Time" > 
 				<!--<input type="date" th:field="*{date}" placeholder="date" >
 			
 				<input type="date" th:field="*{lastContactedDateAndTime}" placeholder="last Contacted Date And Time" > -->
 	
-				<input type="text" th:field="*{leadSolutionSuggested}" placeholder="lead Solution Suggested">
+				<!--<input type="text" th:field="*{leadSolutionSuggested}" placeholder="lead Solution Suggested">-->
+				&emsp;Lead Solution Suggested:&emsp;<select th:field="*{leadSolutionSuggested}" > 
+        			<option value="CCH tagetik">CCH Tagetik</option> 
+        			<option value="Akeron">Akeron</option> 
+        			<option value="Patang">Patang</option> 
+        			<option value="onestream"> onestream </option> 
+        			<option value="adecta"> adecta </option>
+        			<option value="fluence"> fluence </option>
+        			<option value="Entomo"> Entomo </option>
+        			<option value="elysianNX"> elysianNX </option>
+    			</select> <br><br> 
+				<!--<input type="text" th:field="*{leadGenerated}" placeholder="lead Generated" required>-->
+				Lead Generated:&emsp;&emsp;&emsp;<select th:field="*{leadGenerated}" > 
+        			<option value="Marketing Qualified">Marketing Qualified</option> 
+        			<option value="Sales Qualified">Sales Qualified</option> 
+        			<option value="opportunity"> opportunity </option>
+    			</select> 
+    			
+				&emsp;Lead Status:&nbsp;<input type="text" th:field="*{leadStatus}" placeholder="lead Status" required>
 				
-				<input type="text" th:field="*{leadGenerated}" placeholder="lead Generated" required>
+				<!--<input type="text" th:field="*{leadSource}" placeholder="lead Source" required>-->
+				&emsp;Lead Source:&emsp;<select th:field="*{leadSource}" > 
+        			<option value="Google Ads">Google Ads</option> 
+        			<option value="Facebook ">Facebook </option> 
+        			<option value="Twitter">Twitter</option> 
+        			<option value="Instagram"> Instagram </option> 
+        			<option value="LinkedIn"> LinkedIn </option>
+        			<option value="Referral"> Referral </option>
+        			<option value="Website visit"> Website visit </option>
+        			<option value="Whitepapers/casestudies"> Whitepapers/casestudies </option>
+        			<option value="Email Campaign"> Email Campaign </option>
+        			<option value="Chatbot"> Chatbot </option>
+    			</select> 
 				
-				<input type="text" th:field="*{leadStatus}" placeholder="lead Status" required>
+				<!--<input type="text" th:field="*{lifeCycleStages}" placeholder="life Cycle Stages" required>-->
+				&emsp;Life Cycle Stages:&emsp;<select th:field="*{lifeCycleStages}" > 
+        			<option value="New">New</option> 
+        			<option value="nurture ">nurture </option> 
+        			<option value="qualified">qualified</option> 
+        			<option value="quote requested"> quote requested </option> 
+        			<option value="quote sent"> quote sent </option>
+        			<option value="call connected"> call connected </option>
+        			<option value="email sent"> email sent </option>
+        			<option value="open deal"> open deal </option>
+        			<option value="recycle"> recycle </option>
+        			<option value="unqualified"> unqualified </option>
+        			<option value="lost"> lost </option>
+        			<option value="converted"> converted </option>
+        			<option value="delayed"> delayed </option>
+        			<option value="closed"> closed </option>
+    			</select> <br><br>
+				&emsp;Company Name:&emsp;<input type="text" th:field="*{CompanyName}" placeholder="Company Name" required>
 				
-				<input type="text" th:field="*{leadSource}" placeholder="lead Source" required>
+				&emsp;Website:&emsp;<input type="text" th:field="*{website}" placeholder="website" required>
 				
-				<input type="text" th:field="*{lifeCycleStages}" placeholder="life Cycle Stages" required>
+				&emsp;Company LinkedIn:&emsp;<input type="text" th:field="*{CompanyLinkedIn}" placeholder="Company LinkedIn" required>
+				<br><br>
+				&emsp;Contact Number:&emsp;<input type="text" th:field="*{contactNumber}" placeholder="contact Number" required>
 				
-				<input type="text" th:field="*{CompanyName}" placeholder="Company Name" required>
-				
-				<input type="text" th:field="*{website}" placeholder="website" required>
-				
-				<input type="text" th:field="*{CompanyLinkedIn}" placeholder="Company LinkedIn" required>
-				
-				<input type="text" th:field="*{contactNumber}" placeholder="contact Number" required>
-			
-				<input type="text" th:field="*{industry}" placeholder="industry" required>
+				&emsp;Industry:&emsp;<input type="text" th:field="*{industry}" placeholder="industry" required>
 		
-				<input type="text" th:field="*{stateAndCountry}" placeholder="state And Country" required>
+				&emsp;State And Country:&emsp;<input type="text" th:field="*{stateAndCountry}" placeholder="state And Country" required>
+				<br><br>
+				&emsp;Annual Revenue:&emsp;<input type="text" th:field="*{annualRevenue}" placeholder="annual Revenue">
 			
-				<input type="text" th:field="*{annualRevenue}" placeholder="annual Revenue">
-			
-				<input type="text" th:field="*{partners}" placeholder="partners">
+				&emsp;Partners:&emsp;<input type="text" th:field="*{partners}" placeholder="partners">
 				
-				<input type="text" th:field="*{use}" placeholder="use">
+				<!--  <input type="text" th:field="*{use}" placeholder="use">-->
 				
-				<input type="text" th:field="*{firstName}" placeholder="firstName">
 				
-				<input type="text" th:field="*{lastName}" placeholder="lastName">
+    			
+				&emsp;First Name:&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input type="text" th:field="*{firstName}" placeholder="firstName">
+				<br><br>
+				&emsp;Last Name:&emsp;&emsp;&nbsp;<input type="text" th:field="*{lastName}" placeholder="lastName">
 				
-				<input type="text" th:field="*{email}" placeholder="email">
+				&emsp;Email:&emsp;<input type="text" th:field="*{email}" placeholder="email" disabled>
 				
-				<input type="text" th:field="*{designation}" placeholder="designation">
+				&emsp;Designation:&emsp;<input type="text" th:field="*{designation}" placeholder="designation">
 				
-				<input type="text" th:field="*{mailingCountry}" placeholder="mailing Country">
+				&emsp;Mailing Country:&emsp;<input type="text" th:field="*{mailingCountry}" placeholder="mailing Country">
+				<br><br>
+				&emsp;Person LinkedInn:&emsp;<input type="text" th:field="*{personLinkedInn}" placeholder="person LinkedInn">
 				
-				<input type="text" th:field="*{personLinkedInn}" placeholder="person LinkedInn">
+				&emsp;Phone Number:&emsp;<input type="text" th:field="*{phoneNumber}" placeholder="phone Number">
 				
-				<input type="text" th:field="*{phoneNumber}" placeholder="phone Number">
+				&emsp;Additional Details:&emsp;<input type="text" th:field="*{additionalDetails}" placeholder="additional Details">
+				&emsp;Lead Manage:&emsp;<select th:field="*{leadManager}" > 
+        			<option value="Anjali">Anjali</option> 
+        			<option value="Burhan">Burhan</option> 
+        			<option value="Other"> Nimiya </option> 
+        			<option value="Sofia"> Sofia </option> 
+        			<option value="kiranjith"> kiranjith </option> 
+    			</select> 
+				<br><br>
+				&emsp;Latest Comment:&emsp;<input type="text" th:field="*{latestComment}" placeholder="latest Comment">
 				
-				<input type="text" th:field="*{additionalDetails}" placeholder="additional Details">
+				<!--  <input type="text" th:field="*{personSolutionSuggested}" placeholder="person Solution Suggested ">-->
 				
-				<input type="text" th:field="*{latestComment}" placeholder="latest Comment">
+				&emsp;PersonSolutionSuggested:&emsp;<select th:field="*{personSolutionSuggested}" > 
+        			<option value="CCH tagetik">CCH Tagetik</option> 
+        			<option value="Akeron">Akeron</option> 
+        			<option value="Patang">Patang</option> 
+        			<option value="onestream"> onestream </option> 
+        			<option value="adecta"> adecta </option>
+        			<option value="fluence"> fluence </option>
+        			<option value="Entomo"> Entomo </option>
+        			<option value="elysianNX"> elysianNX </option>
+    			</select> 
 				
-				<input type="text" th:field="*{personSolutionSuggested}" placeholder="person Solution Suggested ">
+				<!-- <input type="text" th:field="*{leadManager}" placeholder="lead Manager"> -->
 				
-				<input type="text" th:field="*{leadManager}" placeholder="lead Manager">
-			
+				
+    			&emsp;Use:&emsp;<select th:field="*{use}" > 
+        			<option value="SAP">SAP</option> 
+        			<option value="Oracle">Oracle</option> 
+        			<option value="Other"> Other </option> 
+    			</select> 
 					<br><br>
 					<button type="submit">Update New Lead</button>
 			</form>
 </div>	
-	<footer>
+	<footer style="color: #4495fa">
     <font size="1">&nbsp;&nbsp;&copy; Copyright 2023 <a href="https://www.samcorporate.com/"
        >SAM Corporate</a>. All rights reserved. </font>
   </footer>	

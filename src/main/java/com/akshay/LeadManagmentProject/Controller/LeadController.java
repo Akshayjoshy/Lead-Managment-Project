@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,7 +52,9 @@ public class LeadController {
             Iterator<Row> rows = sheet.iterator();
 
             List<LeadModel> leadModelList = new ArrayList<>();
-
+            
+            boolean hasDuplicates = checkForDuplicates(leadModelList);
+            
             while (rows.hasNext()) {
                 Row row = rows.next();
                 
@@ -146,7 +147,13 @@ public class LeadController {
             }
                 
             leadRepository.saveAll(leadModelList);  
+            if (hasDuplicates) {
+                model.addAttribute("message", "Duplicates found!");
+            } else {
             model.addAttribute("message", "Excel file uploaded and data saved successfully.");
+           
+              //  model.addAttribute("message", "File processed successfully.");
+            }
         } catch (IOException e) {
             model.addAttribute("message", "Error uploading Excel file: " + e.getMessage());
             e.printStackTrace();
@@ -154,6 +161,12 @@ public class LeadController {
 
         return "upload";
     }
-    	
+
+	private boolean checkForDuplicates(List<LeadModel> leadModelList) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+    
+	
 	
 }
