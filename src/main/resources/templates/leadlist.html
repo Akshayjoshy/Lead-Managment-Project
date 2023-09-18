@@ -4,19 +4,7 @@
   body{
   background-color:white;
   }
-button{
-  width: 10%;
- background-color: #4495fa;
-  color: white;
-  padding: 10px 20px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  justify-content: space-around;
-  align-content: center;
-}
+
 .centr{
 justify-content: space-around;
  margin: auto;
@@ -45,22 +33,46 @@ align-content: left;
  top: 0;
 }
 table {
-  border-collapse: collapse;        
-  width: 100%;
-  
+  width: 50%;
+  height:100px;
+  justify-content: space-around;
+  align-content: center;
+  border-spacing: 0 15px;
+   border-collapse: separate;
 }
-th,
-td {
- padding: 8px 16px;
- border: 1px solid #ccc;
-    }
+
 td{
-background-color: rgb(243, 242, 242);
+padding: 20px 16px;
+
 }
 th {
-      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+	  padding: 15px 16px;
+ 	  border: 1px solid #ccc;
+      background: #edf6fc;
  }
-
+.conta-border {
+  width: 97% !important;
+  height: 50%;
+  align-content: center;
+  justify-content: space-around;
+  padding: 20px;
+  margin: auto;
+  margin-top: 80px;
+  background-color: white;
+  border-radius: 20px;
+  border: solid 2px #ccc;
+}
+strong {
+  color:  #4495fa;
+  text-align: center;
+}
+h1{
+text-align: center;
+}
+footer{
+ margin: auto;
+ text-align: center;
+}
 </style>
 <head>
   <meta charset="utf-8">
@@ -75,20 +87,21 @@ th {
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	
+ <!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	 -->
 	<link rel="stylesheet" href="style.css">
   <!-- Vendor CSS Files -->
   <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
+
 <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet"/>-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" /> -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" /> 
 
 	<!--jQuery library file -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -143,8 +156,9 @@ th {
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
   crossorigin="anonymous"></script>
   <br>
-&emsp;&emsp;&emsp;<a href="/"><button>IMPORT</button></a>&emsp;&emsp;<a href="#"><button>EXPORT</button></a><br>&emsp;
-<script type="text/javascript">
+
+
+<!--  <script type="text/javascript">
 
 function  myConfirm(){
 
@@ -155,8 +169,11 @@ function  myConfirm(){
 	   return false;
 	  }
 }
-</script>
-<div class="fixTableHead">
+</script> -->
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="/"><input type="button" value="Import"></a>&emsp;&emsp;<a href="/export/excel"><input type="button" value="Export"></a>
+<h1><strong>All Leads</strong></h1>
+<div class="conta-border">
+<div class="fixTableHead">		
 	<table id="tableID" class="display">
             <thead>
                 <tr>
@@ -192,11 +209,11 @@ function  myConfirm(){
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="loginUser : ${listLoginUsers}">
+                <tr th:each="loginUser : ${listLoginUsers}" >
                 	
 					
                     <td th:text="${loginUser.numberOfEmployee}"></td>
-                     <td th:text="${loginUser.date}"></td>
+                     <td th:text="${loginUser.date}"  >  </td>
                      <td th:text="${loginUser.lastContactedDateAndTime}"></td>
                       <td th:text="${loginUser.leadSolutionSuggested}"></td>
                        <td th:text="${loginUser.leadGenerated}"></td>
@@ -218,11 +235,11 @@ function  myConfirm(){
                           <td th:text="${loginUser.designation}"></td>
                           <td th:text="${loginUser.mailingCountry}"></td>
                           <td th:text="${loginUser.personLinkedInn}"></td>
-                          <td th:text="${loginUser.phoneNumber}"></td>
-                          <td th:text="${loginUser.additionalDetails}"></td>
-                          <td th:text="${loginUser.latestComment}"></td>  
-                          <td th:text="${loginUser.personSolutionSuggested}"></td>  
-                          <td th:text="${loginUser.leadManager}"></td>  
+                         <td th:text="${loginUser.phoneNumber}"></td>
+                       <td th:text="${loginUser.additionalDetails}"></td>
+                      <td th:text="${loginUser.latestComment}"></td>  
+                      <td th:text="${loginUser.personSolutionSuggested}"></td>  
+                     <td th:text="${loginUser.leadManager}"></td>  
                                
                     <td>
                    
@@ -239,7 +256,8 @@ function  myConfirm(){
             </tbody>
         </table>
         
-    </div> 
+    </div> <br>
+</div>
 <script>
 
 			/* Initialization of datatables */
@@ -255,19 +273,17 @@ function  myConfirm(){
 				// Ordering the table in descending
 				// order of students marks
 				
-
-
-				$('#tableID tbody').on('click', 'tr', function () {
+				/*	$('#tableID tbody').on('click', 'tr', function () {
 
 					// Check for 'selected' class and remove
 					if ($(this).hasClass('selected')) {
-						$(this).removeClass('selected');
+						$(this).updateClass('/loginUser/showFormForUpdate/{id}(id=${loginUser.id})');
 					}
 					else {
 						mytableVar.$('tr.selected').removeClass('selected');
 						$(this).addClass('selected');
 					}
-				});
+				});*/
 
 				// On button click, remove the row with setting
 				// the draw() to false
@@ -277,7 +293,12 @@ function  myConfirm(){
 					mytableVar.row('.selected').remove().draw(false);
 				});
 			});
-</script>    
+			
+
+</script> 
+<footer style="color: #4495fa">
+    <font size="1">&nbsp;&nbsp;&copy; Copyright 2023 <a href="https://www.samcorporate.com/" style="color: #4495fa">SAM Corporate</a>. All rights reserved. </font>
+  </footer>	 
 </body>
 
 </html>

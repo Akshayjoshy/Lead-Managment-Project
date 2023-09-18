@@ -1,7 +1,10 @@
 package com.akshay.LeadManagmentProject.Controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -55,6 +58,8 @@ public class LeadController {
             
             boolean hasDuplicates = checkForDuplicates(leadModelList);
             
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            
             while (rows.hasNext()) {
                 Row row = rows.next();
                 
@@ -88,19 +93,32 @@ public class LeadController {
                 } 	
                 
                 //leadModel.setDate(row.getCell(2).getDateCellValue());
-               
+                Cell dateCell = row.getCell(2); // Adjust the cell index as per your Excel data
+                if (dateCell != null) {
+                    if (dateCell.getCellType() == CellType.NUMERIC) {
+                        Date dateValue = dateCell.getDateCellValue();
+                        leadModel.setDate(dateValue);
+                    } else if (dateCell.getCellType() == CellType.STRING) {
+                        try {
+                            Date dateValue = dateFormat.parse(dateCell.getStringCellValue());
+                            leadModel.setDate(dateValue);
+                        } catch (ParseException e) {
+                            // Handle date parsing error
+                        }
+                    }
+                }
                 
       
-                leadModel.setLeadSolutionSuggested(row.getCell(2).getStringCellValue());
-                leadModel.setLeadGenerated(row.getCell(3).getStringCellValue());
-                leadModel.setLeadStatus(row.getCell(4).getStringCellValue());
-                leadModel.setLeadSource(row.getCell(5).getStringCellValue());
-                leadModel.setLifeCycleStages(row.getCell(6).getStringCellValue());
-                leadModel.setCompanyName(row.getCell(7).getStringCellValue());
-                leadModel.setWebsite(row.getCell(8).getStringCellValue());
-                leadModel.setCompanyLinkedIn(row.getCell(9).getStringCellValue());
+                leadModel.setLeadSolutionSuggested(row.getCell(3).getStringCellValue());
+                leadModel.setLeadGenerated(row.getCell(4).getStringCellValue());
+                leadModel.setLeadStatus(row.getCell(5).getStringCellValue());
+                leadModel.setLeadSource(row.getCell(6).getStringCellValue());
+                leadModel.setLifeCycleStages(row.getCell(7).getStringCellValue());
+                leadModel.setCompanyName(row.getCell(8).getStringCellValue());
+                leadModel.setWebsite(row.getCell(9).getStringCellValue());
+                leadModel.setCompanyLinkedIn(row.getCell(10).getStringCellValue());
                 
-                Cell contactCell = row.getCell(10);
+                Cell contactCell = row.getCell(11);
                 //leadModel.setContactNumber(row.getCell(11).getStringCellValue());
                 if (contactCell != null) {
                 if (contactCell.getCellType() == CellType.NUMERIC) {
@@ -112,20 +130,20 @@ public class LeadController {
                 }
                 }
                 
-                leadModel.setIndustry(row.getCell(11).getStringCellValue());
-                leadModel.setStateAndCountry(row.getCell(12).getStringCellValue());
-                leadModel.setAnnualRevenue(row.getCell(13).getStringCellValue());
+                leadModel.setIndustry(row.getCell(12).getStringCellValue());
+                leadModel.setStateAndCountry(row.getCell(13).getStringCellValue());
+                leadModel.setAnnualRevenue(row.getCell(14).getStringCellValue());
                 
-                leadModel.setPartners(row.getCell(14).getStringCellValue());
-                leadModel.setUse(row.getCell(15).getStringCellValue());
-                leadModel.setFirstName(row.getCell(16).getStringCellValue());
-                leadModel.setLastName(row.getCell(17).getStringCellValue());
-                leadModel.setEmail(row.getCell(18).getStringCellValue());
-                leadModel.setDesignation(row.getCell(19).getStringCellValue());
-                leadModel.setMailingCountry(row.getCell(20).getStringCellValue());
-                leadModel.setPersonLinkedInn(row.getCell(21).getStringCellValue());
+                leadModel.setPartners(row.getCell(15).getStringCellValue());
+                leadModel.setUse(row.getCell(16).getStringCellValue());
+                leadModel.setFirstName(row.getCell(17).getStringCellValue());
+                leadModel.setLastName(row.getCell(18).getStringCellValue());
+                leadModel.setEmail(row.getCell(19).getStringCellValue());
+                leadModel.setDesignation(row.getCell(20).getStringCellValue());
+                leadModel.setMailingCountry(row.getCell(21).getStringCellValue());
+                leadModel.setPersonLinkedInn(row.getCell(22).getStringCellValue());
                 
-                Cell phoneCell = row.getCell(22);
+                Cell phoneCell = row.getCell(23);
                 //leadModel.setPhoneNumber(row.getCell(23).getStringCellValue());
                 if (phoneCell != null) {
                     if (phoneCell.getCellType() == CellType.NUMERIC) {
@@ -137,19 +155,23 @@ public class LeadController {
                     }
                 }
                 
-                leadModel.setAdditionalDetails(row.getCell(23).getStringCellValue());
+                leadModel.setAdditionalDetails(row.getCell(24).getStringCellValue());
                 //leadModel.setLastContactedDateAndTime(row.getCell(24).getDateCellValue());
-                leadModel.setLatestComment(row.getCell(24).getStringCellValue());
-                leadModel.setPersonSolutionSuggested(row.getCell(25).getStringCellValue());
-                leadModel.setLeadManager(row.getCell(26).getStringCellValue());
+                leadModel.setLatestComment(row.getCell(25).getStringCellValue());
+                leadModel.setPersonSolutionSuggested(row.getCell(26).getStringCellValue());
+                leadModel.setLeadManager(row.getCell(27).getStringCellValue());
                 
                 leadModelList.add(leadModel);
             }
                 
-            leadRepository.saveAll(leadModelList);  
+             
+            
             if (hasDuplicates) {
                 model.addAttribute("message", "Duplicates found!");
             } else {
+            	List<LeadModel> existingData = leadRepository.findAll();
+                leadModelList.addAll(existingData);
+            	leadRepository.saveAll(leadModelList); 
             model.addAttribute("message", "Excel file uploaded and data saved successfully.");
            
               //  model.addAttribute("message", "File processed successfully.");
@@ -163,9 +185,22 @@ public class LeadController {
     }
 
 	private boolean checkForDuplicates(List<LeadModel> leadModelList) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		for (LeadModel leadModel : leadModelList) {
+            // Assuming 'email' is a unique identifier for leads, adjust this as needed
+            String email = leadModel.getEmail();
+
+            // Query the database to check if a lead with the same email exists
+            LeadModel existingLead = leadRepository.findByEmail(email);
+
+            if (existingLead != null) {
+                // A lead with the same email already exists
+                return true;
+            }
+        }
+
+        // No duplicates found
+        return false;
+    }
     
 	
 	

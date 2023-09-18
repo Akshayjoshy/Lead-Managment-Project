@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>ADD ADMIN</title>
+<title>LoginUser Update</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 <style>
@@ -27,21 +27,56 @@ h1{
 
 }
 button{
-  width: 15%;
   background-color: #4495fa;
   color: white;
-  padding: 10px 20px;
+  padding: 5px 15px;
   margin: 10px 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
-  justify-content: space-around;
-  align-content: center;
+}
+input[type="text"],
+input[type="password"],input[type="number"],input[type="date"],
+.form-select {
+  width: 20%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  /* border: none; */
+  border: 2px solid #f3f2f2;
+  border-radius: 20px;
+  background-color:#f6f6f6;
+  text-align: center;
+}
+.form-select.ip2 {
+  width: 20%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  /* border: none; */
+  border: 2px solid #f3f2f2;
+  border-radius: 20px;
+  background-color:#f6f6f6;
+  text-align: center;
+  
 }
 footer{
  margin: auto;
  text-align: center;
+}
+input[type="submit"] {
+  background-color: #4495fa;
+  color: white;
+  padding: 5px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  
 }
 </style>
 <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -99,51 +134,55 @@ footer{
 			<form action="#" th:action="@{/loginUser/saveUser}" th:object="${loginUser}" method="POST">
 				<input type="hidden" th:field="*{id}" />
 				
-				Number Of Employee:&emsp;<input type="number" th:field="*{numberOfEmployee}"  placeholder="number Of Employee" required>
+				Number Of Employee<input type="number" th:field="*{numberOfEmployee}"  placeholder="number Of Employee" required>
 			
-			   &emsp;Date:&emsp;<input type="date" th:field="*{date}" placeholder="date" >
+			   &emsp;Date:&emsp;&emsp;&emsp;&emsp;<input type="text" th:field="*{date}" placeholder="yyyy/mm/dd" >
 			
-				&emsp;Last Contacted Date:&emsp;<input type="date" th:field="*{lastContactedDateAndTime}" placeholder="last Contacted Date And Time" > 
+				Last Contacted Date:&emsp;&emsp;&nbsp;<input type="date" th:field="*{lastContactedDateAndTime}" placeholder="last Contacted Date And Time" > 
 				<!--<input type="date" th:field="*{date}" placeholder="date" >
 			
 				<input type="date" th:field="*{lastContactedDateAndTime}" placeholder="last Contacted Date And Time" > -->
 	
-				<!--<input type="text" th:field="*{leadSolutionSuggested}" placeholder="lead Solution Suggested">-->
-				&emsp;Lead Solution Suggested:&emsp;<select th:field="*{leadSolutionSuggested}" > 
-        			<option value="CCH tagetik">CCH Tagetik</option> 
-        			<option value="Akeron">Akeron</option> 
-        			<option value="Patang">Patang</option> 
-        			<option value="onestream"> onestream </option> 
-        			<option value="adecta"> adecta </option>
-        			<option value="fluence"> fluence </option>
-        			<option value="Entomo"> Entomo </option>
-        			<option value="elysianNX"> elysianNX </option>
-    			</select> <br><br> 
-				<!--<input type="text" th:field="*{leadGenerated}" placeholder="lead Generated" required>-->
-				Lead Generated:&emsp;&emsp;&emsp;<select th:field="*{leadGenerated}" > 
-        			<option value="Marketing Qualified">Marketing Qualified</option> 
-        			<option value="Sales Qualified">Sales Qualified</option> 
-        			<option value="opportunity"> opportunity </option>
-    			</select> 
+				<!--<input type="text" th:field="*{leadSolutionSuggested}" placeholder="lead Solution Suggested">--><br><br>
+				 
+				Company Name:&emsp;&emsp;&nbsp;<input type="text" th:field="*{CompanyName}" placeholder="Company Name" required>
+				
+				&emsp;Website:&emsp;&emsp;&emsp;<input type="text" th:field="*{website}" placeholder="website" required>
+				
+				&emsp;Company LinkedIn:&emsp;&emsp;<input type="text" th:field="*{CompanyLinkedIn}" placeholder="Company LinkedIn" required>
+				<br><br>
+				Contact Number:&emsp;&emsp;<input type="text" th:field="*{contactNumber}" placeholder="contact Number" required>
+				
+				&emsp;Industry:&emsp;&emsp;&emsp;&nbsp;<input type="text" th:field="*{industry}" placeholder="industry" required>
+		
+				&emsp;State And Country:&emsp;&emsp;<input type="text" th:field="*{stateAndCountry}" placeholder="state And Country" required>
+				<br><br>
+				Annual Revenue:&emsp;&emsp;<input type="text" th:field="*{annualRevenue}" placeholder="annual Revenue">
+			
+				&emsp;Partners:&emsp;&emsp;&emsp;&emsp;<input type="text" th:field="*{partners}" placeholder="partners">
+				
+				<!--  <input type="text" th:field="*{use}" placeholder="use">-->
+				
+				
     			
-				&emsp;Lead Status:&nbsp;<input type="text" th:field="*{leadStatus}" placeholder="lead Status" required>
+				&emsp;First Name:&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;<input type="text" th:field="*{firstName}" placeholder="firstName">
+				<br><br>
+				Last Name:&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="text" th:field="*{lastName}" placeholder="lastName">
 				
-				<!--<input type="text" th:field="*{leadSource}" placeholder="lead Source" required>-->
-				&emsp;Lead Source:&emsp;<select th:field="*{leadSource}" > 
-        			<option value="Google Ads">Google Ads</option> 
-        			<option value="Facebook ">Facebook </option> 
-        			<option value="Twitter">Twitter</option> 
-        			<option value="Instagram"> Instagram </option> 
-        			<option value="LinkedIn"> LinkedIn </option>
-        			<option value="Referral"> Referral </option>
-        			<option value="Website visit"> Website visit </option>
-        			<option value="Whitepapers/casestudies"> Whitepapers/casestudies </option>
-        			<option value="Email Campaign"> Email Campaign </option>
-        			<option value="Chatbot"> Chatbot </option>
-    			</select> 
+				&emsp;Email:&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="text" th:field="*{email}" placeholder="email">
 				
-				<!--<input type="text" th:field="*{lifeCycleStages}" placeholder="life Cycle Stages" required>-->
-				&emsp;Life Cycle Stages:&emsp;<select th:field="*{lifeCycleStages}" > 
+				&emsp;Designation:&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="text" th:field="*{designation}" placeholder="designation">
+				<br><br>
+				Mailing Country:&emsp;&emsp;&nbsp;<input type="text" th:field="*{mailingCountry}" placeholder="mailing Country">
+				
+				&emsp;Person LinkedInn:<input type="text" th:field="*{personLinkedInn}" placeholder="person LinkedInn">
+				
+				&emsp;Phone Number:&emsp;&emsp;&emsp;&emsp;<input type="text" th:field="*{phoneNumber}" placeholder="phone Number">
+				<br><br>
+				Additional Details:&emsp;&emsp;<input type="text" th:field="*{additionalDetails}" placeholder="additional Details">
+				
+				&emsp;Latest Comment:<input type="text" th:field="*{latestComment}" placeholder="latest Comment">
+				&emsp;Life Cycle Stages:&nbsp;&emsp;&emsp;&emsp;<select class="form-select ip2" th:field="*{lifeCycleStages}" > 
         			<option value="New">New</option> 
         			<option value="nurture ">nurture </option> 
         			<option value="qualified">qualified</option> 
@@ -158,55 +197,60 @@ footer{
         			<option value="converted"> converted </option>
         			<option value="delayed"> delayed </option>
         			<option value="closed"> closed </option>
-    			</select> <br><br>
-				&emsp;Company Name:&emsp;<input type="text" th:field="*{CompanyName}" placeholder="Company Name" required>
+    			</select>
 				
-				&emsp;Website:&emsp;<input type="text" th:field="*{website}" placeholder="website" required>
-				
-				&emsp;Company LinkedIn:&emsp;<input type="text" th:field="*{CompanyLinkedIn}" placeholder="Company LinkedIn" required>
-				<br><br>
-				&emsp;Contact Number:&emsp;<input type="text" th:field="*{contactNumber}" placeholder="contact Number" required>
-				
-				&emsp;Industry:&emsp;<input type="text" th:field="*{industry}" placeholder="industry" required>
-		
-				&emsp;State And Country:&emsp;<input type="text" th:field="*{stateAndCountry}" placeholder="state And Country" required>
-				<br><br>
-				&emsp;Annual Revenue:&emsp;<input type="text" th:field="*{annualRevenue}" placeholder="annual Revenue">
+				<!--  <input type="text" th:field="*{personSolutionSuggested}" placeholder="person Solution Suggested ">-->
 			
-				&emsp;Partners:&emsp;<input type="text" th:field="*{partners}" placeholder="partners">
-				
-				<!--  <input type="text" th:field="*{use}" placeholder="use">-->
-				
-				
+				<br><br>
+              	Lead Source:&emsp;&emsp;&emsp;&emsp;<select class="form-select ip2" th:field="*{leadSource}">
+                <option value="Google Adsp">Google Adsp</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Twitter">Twitter</option>
+                <option value="Instagram">Instagram</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Referral">Referral</option>
+                <option value="Website visit">Website visit</option>
+                <option value="Whitepapers/casestudies">Whitepapers/casestudies</option>
+                <option value="Email Campaign">Email Campaign</option>
+                <option value="Chatbot">Chatbot</option>
+              </select>
     			
-				&emsp;First Name:&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input type="text" th:field="*{firstName}" placeholder="firstName">
-				<br><br>
-				&emsp;Last Name:&emsp;&emsp;&nbsp;<input type="text" th:field="*{lastName}" placeholder="lastName">
-				
-				&emsp;Email:&emsp;<input type="text" th:field="*{email}" placeholder="email" disabled>
-				
-				&emsp;Designation:&emsp;<input type="text" th:field="*{designation}" placeholder="designation">
-				
-				&emsp;Mailing Country:&emsp;<input type="text" th:field="*{mailingCountry}" placeholder="mailing Country">
-				<br><br>
-				&emsp;Person LinkedInn:&emsp;<input type="text" th:field="*{personLinkedInn}" placeholder="person LinkedInn">
-				
-				&emsp;Phone Number:&emsp;<input type="text" th:field="*{phoneNumber}" placeholder="phone Number">
-				
-				&emsp;Additional Details:&emsp;<input type="text" th:field="*{additionalDetails}" placeholder="additional Details">
-				&emsp;Lead Manage:&emsp;<select th:field="*{leadManager}" > 
+    			&emsp;Lead Status:&emsp;&emsp;&nbsp;<input type="text" th:field="*{leadStatus}" placeholder="lead Status" required>
+				&emsp;Lead Manage:&emsp;&emsp;&emsp;&emsp;&emsp;<select class="form-select ip2" th:field="*{leadManager}" > 
         			<option value="Anjali">Anjali</option> 
         			<option value="Burhan">Burhan</option> 
         			<option value="Other"> Nimiya </option> 
         			<option value="Sofia"> Sofia </option> 
         			<option value="kiranjith"> kiranjith </option> 
     			</select> 
+    			<br><br>
+				Lead Generated:&emsp;&emsp;&emsp;<select class="form-select ip2" th:field="*{leadGenerated}" > 
+        			<option value="Marketing Qualified">Marketing Qualified</option> 
+        			<option value="Sales Qualified">Sales Qualified</option> 
+        			<option value="opportunity"> opportunity </option>
+    			</select> 
+				
+				<!-- <input type="text" th:field="*{leadManager}" placeholder="lead Manager"> -->
+				
+			
+    			&emsp;Use:&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<select class="form-select ip2" th:field="*{use}" > 
+        			<option value="SAP">SAP</option> 
+        			<option value="Oracle">Oracle</option> 
+        			<option value="Other"> Other </option> 
+    			</select> 
+				Lead Solution Suggested:&emsp;<select class="form-select ip2"  th:field="*{leadSolutionSuggested}" > 
+        			<option value="CCH tagetik">CCH Tagetik</option> 
+        			<option value="Akeron">Akeron</option> 
+        			<option value="Patang">Patang</option> 
+        			<option value="onestream"> onestream </option> 
+        			<option value="adecta"> adecta </option>
+        			<option value="fluence"> fluence </option>
+        			<option value="Entomo"> Entomo </option>
+        			<option value="elysianNX"> elysianNX </option>
+    			</select>  
+				<!--<input type="text" th:field="*{leadGenerated}" placeholder="lead Generated" required>-->
 				<br><br>
-				&emsp;Latest Comment:&emsp;<input type="text" th:field="*{latestComment}" placeholder="latest Comment">
-				
-				<!--  <input type="text" th:field="*{personSolutionSuggested}" placeholder="person Solution Suggested ">-->
-				
-				&emsp;PersonSolutionSuggested:&emsp;<select th:field="*{personSolutionSuggested}" > 
+    			Person Solution Suggested:&emsp;<select class="form-select ip2" th:field="*{personSolutionSuggested}" > 
         			<option value="CCH tagetik">CCH Tagetik</option> 
         			<option value="Akeron">Akeron</option> 
         			<option value="Patang">Patang</option> 
@@ -216,17 +260,18 @@ footer{
         			<option value="Entomo"> Entomo </option>
         			<option value="elysianNX"> elysianNX </option>
     			</select> 
+            
+           
 				
-				<!-- <input type="text" th:field="*{leadManager}" placeholder="lead Manager"> -->
+				
+				<!--<input type="text" th:field="*{leadSource}" placeholder="lead Source" required>-->
 				
 				
-    			&emsp;Use:&emsp;<select th:field="*{use}" > 
-        			<option value="SAP">SAP</option> 
-        			<option value="Oracle">Oracle</option> 
-        			<option value="Other"> Other </option> 
-    			</select> 
+				<!--<input type="text" th:field="*{lifeCycleStages}" placeholder="life Cycle Stages" required>-->
+				
 					<br><br>
-					<button type="submit">Update New Lead</button>
+					<input type="submit" value="Update New Lead">
+					<!--  <input type="submit" value="Update New Lead"><button type="submit">Update New Lead</button>-->
 			</form>
 </div>	
 	<footer style="color: #4495fa">

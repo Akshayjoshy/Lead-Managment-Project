@@ -69,7 +69,7 @@ public class LoginController {
 		}
 	
 	@PostMapping("/home")
-	public String homeList(@RequestParam String username,@RequestParam String password) {
+	public String homeList(@RequestParam String username,@RequestParam String password,Model model) {
 		
 		LoginModel loginModel1=loginRepository.getByUsernameAndPassword(username, password);
 		
@@ -77,6 +77,7 @@ public class LoginController {
 			System.out.println("user found");
 			return "home";
 		}else {
+			model.addAttribute("messages", "INVALID USERNAME OR PASSWORD.");
 			return "Error";
 		}
 		

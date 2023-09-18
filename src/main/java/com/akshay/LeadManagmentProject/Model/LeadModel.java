@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table
@@ -20,7 +24,9 @@ public class LeadModel {
 	
 	private int numberOfEmployee;
 	
-	private String date;
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	 @Temporal(TemporalType.DATE)
+	private Date date;
 	
 	private String lastContactedDateAndTime;
 	
@@ -82,10 +88,10 @@ public class LeadModel {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	} 
 	public String getLeadSolutionSuggested() {
